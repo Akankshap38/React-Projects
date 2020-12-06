@@ -8,10 +8,10 @@ var customStyle = {
     margin: "16px",
     float: "left"
 }
-function Note(){
+function Note(props){
     return <div style={customStyle}>
-        <h1>Title</h1>
-        <p>Content of the div</p>
+        <h1>{props.title}</h1>
+        <p>{props.content}</p>
     </div>
 }
 
