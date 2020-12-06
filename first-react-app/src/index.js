@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {mapNumbers,filteredNums,accumulator,search,position} from './jsPractice'
+
+console.log({mapNumbers});
+console.log({filteredNums});
+console.log({accumulator});
+console.log({search});
+console.log({position});
 
 function Card(props){
   var imgStyle = {
