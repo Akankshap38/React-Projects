@@ -1,25 +1,21 @@
 import React from "react";
-import Header from "./Header"
-import Footer from "./Footer"
-import Note from "./Note"
-import notes from "../note"
 
-console.log(notes);
 
 function App(){
-    return <div>
-        <Header/>
-        {
-            notes.map(noteItem=>{
-                return <Note
-                key = {noteItem.key}
-                title={noteItem.title} 
-                content = {noteItem.content} />
-            })
-        }
-      
-        <Footer/>
-    </div>
+  const [count,setCount] = React.useState(0);
+
+  function increase(){
+      setCount(count+1);
+  }
+
+  function decrease(){
+    setCount(count-1);
+  }
+  return (<div>
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+      <button onClick={decrease}>-</button>
+  </div>)
 }
 
 export default App;
