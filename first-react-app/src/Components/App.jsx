@@ -31,8 +31,7 @@ function App(){
 
   return (
     <div className="container">
-      <h1>Hello {fullName.fname} {fullName.lname}
-      {console.log(fullName)}</h1>
+      <h1>Hello {fullName.fname} {fullName.lname}</h1>
       <form>
         <input name="fName" placeholder="First Name" onChange={updateHeading}/>
         <input name="lName" placeholder="Last Name" onChange={updateHeading}/>
