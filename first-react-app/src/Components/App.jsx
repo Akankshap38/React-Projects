@@ -6,8 +6,8 @@ function App(){
 
   function getCurrentTime(){
     setTime(new Date().toLocaleTimeString());
-    console.log(new Date().toLocaleTimeString());
   }
+  setInterval(getCurrentTime,1000);
   return (<div>
       <h1>{currentTime}</h1>
       <button onClick={getCurrentTime}>Get Time</button>
