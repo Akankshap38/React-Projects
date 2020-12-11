@@ -2,19 +2,15 @@ import React from "react";
 
 
 function App(){
-  const [count,setCount] = React.useState(0);
+  const [currentTime,setTime] = React.useState("TIME");
 
-  function increase(){
-      setCount(count+1);
-  }
-
-  function decrease(){
-    setCount(count-1);
+  function getCurrentTime(){
+    setTime(new Date().toLocaleTimeString());
+    console.log(new Date().toLocaleTimeString());
   }
   return (<div>
-      <h1>{count}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <h1>{currentTime}</h1>
+      <button onClick={getCurrentTime}>Get Time</button>
   </div>)
 }
 
