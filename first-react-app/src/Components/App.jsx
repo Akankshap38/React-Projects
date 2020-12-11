@@ -1,17 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 function App(){
-  const [currentTime,setTime] = React.useState("TIME");
+  const [fullName, setFullName] = useState({
+    fname : "",
+    lname : ""
+  });
 
-  function getCurrentTime(){
-    setTime(new Date().toLocaleTimeString());
-  }
-  setInterval(getCurrentTime,1000);
-  return (<div>
-      <h1>{currentTime}</h1>
-      <button onClick={getCurrentTime}>Get Time</button>
-  </div>)
+  function updateHeading(event){
+    console.log(event.target.name);
+    setFullName(prevValue =>{
+    if(event.target.name==="fName")
+      {
+         return {
+           fname:event.target.value,
+           lname:prevValue.lname
+         }
+      }
+    else if(event.target.name==="lName")
+    {
+      return {
+        fname:prevValue.fname,
+        lname:event.target.value
+      }
+    }
+    console.log(fullName);
+  });
+
+}
+
+  return (
+    <div className="container">
+      <h1>Hello {fullName.fname} {fullName.lname}
+      {console.log(fullName)}</h1>
+      <form>
+        <input name="fName" placeholder="First Name" onChange={updateHeading}/>
+        <input name="lName" placeholder="Last Name" onChange={updateHeading}/>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+
 }
 
 export default App;
