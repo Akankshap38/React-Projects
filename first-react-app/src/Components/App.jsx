@@ -9,22 +9,13 @@ function App(){
 
   function updateHeading(event){
     console.log(event.target.name);
+    const {name,value} = event.target;
+
     setFullName(prevValue =>{
-    if(event.target.name==="fName")
-      {
-         return {
-           fname:event.target.value,
-           lname:prevValue.lname
-         }
-      }
-    else if(event.target.name==="lName")
-    {
       return {
-        fname:prevValue.fname,
-        lname:event.target.value
+        ...prevValue,
+        [name]:value
       }
-    }
-    console.log(fullName);
   });
 
 }
@@ -33,8 +24,8 @@ function App(){
     <div className="container">
       <h1>Hello {fullName.fname} {fullName.lname}</h1>
       <form>
-        <input name="fName" placeholder="First Name" onChange={updateHeading}/>
-        <input name="lName" placeholder="Last Name" onChange={updateHeading}/>
+        <input name="fname" placeholder="First Name" onChange={updateHeading} value={fullName.fname}/>
+        <input name="lname" placeholder="Last Name" onChange={updateHeading} value={fullName.lname}/>
         <button>Submit</button>
       </form>
     </div>
