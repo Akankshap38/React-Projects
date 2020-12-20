@@ -1,36 +1,47 @@
-import React, {useState} from "react";
+import React,{useState} from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import Note from "./Note";
+import CreateArea from "./CreateArea";
 
+function App() {
+  const [noteArray, setNoteArray] = useState([]);
 
-function App(){
-  const [fullName, setFullName] = useState({
-    fname : "",
-    lname : ""
-  });
+  function addNote(title,content){
+    console.log("Note to be added!");
+    if(title!==""&&content!=="")
+    {
+      setNoteArray(prevValue=>{
+        return ([...prevValue,{
+          title:title,
+          content:content
+        }])
+      })
+    }
+    console.log(noteArray);
+  }
 
-  function updateHeading(event){
-    console.log(event.target.name);
-    const {name,value} = event.target;
-
-    setFullName(prevValue =>{
-      return {
-        ...prevValue,
-        [name]:value
-      }
-  });
-
-}
+  function deleteCard(id){
+    console.log(id);
+    setNoteArray(prevValue=>{
+      return prevValue.filter((element,index)=>{      
+        return index!==id;
+      })
+    })
+    console.log(noteArray);
+  }
 
   return (
-    <div className="container">
-      <h1>Hello {fullName.fname} {fullName.lname}</h1>
-      <form>
-        <input name="fname" placeholder="First Name" onChange={updateHeading} value={fullName.fname}/>
-        <input name="lname" placeholder="Last Name" onChange={updateHeading} value={fullName.lname}/>
-        <button>Submit</button>
-      </form>
+    <div>
+      <Header />
+      <CreateArea onAdd={addNote} />
+      { noteArray.map((element,index) => {
+          return <Note key={index} title={element.title} content={element.content} onDelete={deleteCard} id={index}/>
+        })
+      }
+      <Footer />
     </div>
   );
-
 }
 
 export default App;
